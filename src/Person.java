@@ -1,29 +1,36 @@
 /**
- * Person Class
- * This represents a person in the system.
- * It is the parent class for Visitor and Employee.
+ * Person Class (Abstract)
+ * Represents a generic person in the Theme Park system.
+ * This class is abstract because it should not be instantiated directly.
+ * It serves as a base class for Visitor and Employee.
  */
-public class Person {
+public abstract class Person {
     // Instance variables
     private String id;
     private String name;
     private int age;
 
-    // Default Constructor
+    /**
+     * Default Constructor
+     * Initializes a Person object with default values.
+     */
     public Person() {
         this.id = "Unknown";
         this.name = "Unknown";
         this.age = 0;
     }
 
-    // Constructor with parameters to set initial values
+    /**
+     * Parameterized Constructor
+     * Allows creating a Person object with specific details.
+     */
     public Person(String id, String name, int age) {
         this.id = id;
         this.name = name;
         this.age = age;
     }
 
-    // Getters and Setters to access private variables
+    // Getters and Setters
 
     public String getId() {
         return id;
