@@ -1,29 +1,23 @@
 /**
  * Person Class (Abstract)
  * Represents a generic person in the Theme Park system.
- * This class is abstract because it should not be instantiated directly.
  * It serves as a base class for Visitor and Employee.
  */
 public abstract class Person {
+
     // Instance variables
     private String id;
     private String name;
     private int age;
 
-    /**
-     * Default Constructor
-     * Initializes a Person object with default values.
-     */
+    // Default Constructor
     public Person() {
         this.id = "Unknown";
         this.name = "Unknown";
         this.age = 0;
     }
 
-    /**
-     * Parameterized Constructor
-     * Allows creating a Person object with specific details.
-     */
+    // Parameterized Constructor
     public Person(String id, String name, int age) {
         this.id = id;
         this.name = name;
@@ -53,6 +47,7 @@ public abstract class Person {
     }
 
     public void setAge(int age) {
+        // Check age validity
         if (age >= 0) {
             this.age = age;
         } else {

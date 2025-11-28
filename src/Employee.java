@@ -4,26 +4,21 @@
  * Extends Person to include job-specific details.
  */
 public class Employee extends Person {
+
     // Employee-specific instance variables
     private String jobTitle;
     private double salary;
 
-    /**
-     * Default Constructor
-     * Initializes an Employee with default values.
-     */
+    // Default Constructor
     public Employee() {
-        super(); // Initialize the Person part first
+        super(); // Initialize Person part
         this.jobTitle = "Staff";
         this.salary = 0.0;
     }
 
-    /**
-     * Parameterized Constructor
-     * Sets properties for both Person (parent) and Employee (child).
-     */
+    // Parameterized Constructor
     public Employee(String id, String name, int age, String jobTitle, double salary) {
-        super(id, name, age); // Pass Person details to the parent constructor
+        super(id, name, age); // Pass details to Person class
         this.jobTitle = jobTitle;
         this.salary = salary;
     }
@@ -43,6 +38,7 @@ public class Employee extends Person {
     }
 
     public void setSalary(double salary) {
+        // Check salary validity
         if (salary >= 0) {
             this.salary = salary;
         } else {

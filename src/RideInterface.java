@@ -1,18 +1,18 @@
 /**
  * RideInterface
- * This interface defines the mandatory behaviors (methods) for all rides.
- * Any class implementing this interface must provide code for these methods.
+ * Defines the mandatory behaviors for all rides.
  */
 public interface RideInterface {
-    // Queue related methods
+
+    // Queue management
     void addVisitorToQueue(Visitor visitor);
     void removeVisitorFromQueue(Visitor visitor);
     void printQueue();
 
-    // Ride operation method
+    // Ride operation
     void runOneCycle();
 
-    // History related methods
+    // History management
     void addVisitorToHistory(Visitor visitor);
     boolean checkVisitorFromHistory(Visitor visitor);
     int numberOfVisitors();

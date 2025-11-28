@@ -4,26 +4,21 @@
  * Extends the Person class to inherit common attributes.
  */
 public class Visitor extends Person {
+
     // Instance variables specific to Visitor
     private String ticketType;
-    private boolean vipStatus; // Indicates if the visitor has VIP status
+    private boolean vipStatus;
 
-    /**
-     * Default Constructor
-     * Creates a Visitor with default values.
-     */
+    // Default Constructor
     public Visitor() {
-        super(); // Calls the parent (Person) default constructor
+        super(); // Call parent constructor
         this.ticketType = "Standard";
         this.vipStatus = false;
     }
 
-    /**
-     * Parameterized Constructor
-     * Sets both inherited Person details and specific Visitor details.
-     */
+    // Parameterized Constructor
     public Visitor(String id, String name, int age, String ticketType, boolean vipStatus) {
-        super(id, name, age); // Passes person details to the superclass
+        super(id, name, age); // Pass details to Person class
         this.ticketType = ticketType;
         this.vipStatus = vipStatus;
     }
