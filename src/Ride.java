@@ -1,4 +1,6 @@
+import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 /**
@@ -15,6 +17,9 @@ public class Ride implements RideInterface {
     
     // Queue for waiting visitors
     private Queue<Visitor> waitingLine;
+    
+    // List for ride history
+    private List<Visitor> rideHistory;
 
     // Default Constructor
     public Ride() {
@@ -22,6 +27,7 @@ public class Ride implements RideInterface {
         this.rideType = "Generic";
         this.operator = null;
         this.waitingLine = new LinkedList<>();
+        this.rideHistory = new LinkedList<>();
     }
 
     // Parameterized Constructor
@@ -30,6 +36,7 @@ public class Ride implements RideInterface {
         this.rideType = rideType;
         this.operator = operator;
         this.waitingLine = new LinkedList<>();
+        this.rideHistory = new LinkedList<>();
     }
 
     // Getters and Setters
@@ -88,19 +95,45 @@ public class Ride implements RideInterface {
 
     @Override
     public void addVisitorToHistory(Visitor visitor) {
+        if (visitor == null) {
+            System.out.println("Cannot add null visitor to history.");
+            return;
+        }
+        rideHistory.add(visitor);
+        System.out.println("Added visitor to history: " + visitor.getName());
     }
 
     @Override
     public boolean checkVisitorFromHistory(Visitor visitor) {
-        return false;
+        if (visitor == null) {
+            System.out.println("Cannot check null visitor.");
+            return false;
+        }
+        boolean found = rideHistory.contains(visitor);
+        System.out.println("Visitor " + visitor.getName() + " in history: " + found);
+        return found;
     }
 
     @Override
     public int numberOfVisitors() {
-        return 0;
+        int count = rideHistory.size();
+        System.out.println("Total visitors in history: " + count);
+        return count;
     }
 
     @Override
     public void printRideHistory() {
+        System.out.println("Ride History for " + rideName + ":");
+        if (rideHistory.isEmpty()) {
+            System.out.println("  (Empty)");
+            return;
+        }
+        
+        // Use Iterator to traverse the list
+        Iterator<Visitor> it = rideHistory.iterator();
+        while (it.hasNext()) {
+            Visitor v = it.next();
+            System.out.println("  - " + v.getName());
+        }
     }
 }
