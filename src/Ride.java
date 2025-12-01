@@ -1,3 +1,4 @@
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -90,10 +91,6 @@ public class Ride implements RideInterface {
     }
 
     @Override
-    public void runOneCycle() {
-    }
-
-    @Override
     public void addVisitorToHistory(Visitor visitor) {
         if (visitor == null) {
             System.out.println("Cannot add null visitor to history.");
@@ -135,5 +132,20 @@ public class Ride implements RideInterface {
             Visitor v = it.next();
             System.out.println("  - " + v.getName());
         }
+    }
+
+    // Sort the history
+    public void sortRideHistory() {
+        if (rideHistory.isEmpty()) {
+            System.out.println("History is empty, nothing to sort.");
+            return;
+        }
+        // Use VisitorComparator to sort the list
+        Collections.sort(rideHistory, new VisitorComparator());
+        System.out.println("Ride history has been sorted.");
+    }
+
+    @Override
+    public void runOneCycle() {
     }
 }

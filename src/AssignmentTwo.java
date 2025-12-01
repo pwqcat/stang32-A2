@@ -4,6 +4,7 @@ public class AssignmentTwo {
         AssignmentTwo assignment = new AssignmentTwo();
         assignment.partThree();
         assignment.partFourA();
+        assignment.partFourB();
     }
 
     public void partThree() {
@@ -79,6 +80,37 @@ public class AssignmentTwo {
     }
 
     public void partFourB() {
+        System.out.println("\n=== Part 4B: Sorting History ===");
+
+        // Create a new Ride
+        Employee operator = new Employee("E003", "Sarah", 25, "Operator", 4800);
+        Ride carousel = new Ride("Carousel", "Family", operator);
+
+        // Create Visitors
+        Visitor v1 = new Visitor("V001", "Tom", 20, "Standard", false);
+        Visitor v2 = new Visitor("V002", "Bob", 22, "VIP", true);
+        Visitor v3 = new Visitor("V003", "Ben", 25, "Standard", false);
+        Visitor v4 = new Visitor("V004", "Jack", 18, "Standard", false);
+        Visitor v5 = new Visitor("V005", "Lee", 30, "VIP", true);
+
+        // Add to history
+        carousel.addVisitorToHistory(v1);
+        carousel.addVisitorToHistory(v2);
+        carousel.addVisitorToHistory(v3);
+        carousel.addVisitorToHistory(v4);
+        carousel.addVisitorToHistory(v5);
+
+        // Print unsorted
+        System.out.println("Before sorting:");
+        carousel.printRideHistory();
+
+        // Sort
+        System.out.println("\nSorting...");
+        carousel.sortRideHistory();
+
+        // Print sorted
+        System.out.println("\nAfter sorting:");
+        carousel.printRideHistory();
     }
 
     public void partFive() {
