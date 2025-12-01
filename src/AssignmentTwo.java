@@ -23,7 +23,7 @@ public class AssignmentTwo {
         Visitor v5 = new Visitor("V005", "Lee", 30, "VIP", true);
 
         // Add visitors to the Queue
-        System.out.println("Adding visitors to history:");
+        System.out.println("Adding visitors...");
         coaster.addVisitorToQueue(v1);
         coaster.addVisitorToQueue(v2);
         coaster.addVisitorToQueue(v3);
@@ -58,7 +58,7 @@ public class AssignmentTwo {
         Visitor v5 = new Visitor("V005", "Lee", 30, "VIP", true);
 
         // Add visitors to the History
-        System.out.println("Adding visitors to history:");
+        System.out.println("Adding visitors to history...");
         dropTower.addVisitorToHistory(v1);
         dropTower.addVisitorToHistory(v2);
         dropTower.addVisitorToHistory(v3);
@@ -66,7 +66,7 @@ public class AssignmentTwo {
         dropTower.addVisitorToHistory(v5);
 
         // Check if a visitor is in history
-        System.out.println("\nChecking visitors:");
+        System.out.println("\nChecking visitors...");
         dropTower.checkVisitorFromHistory(v3); 
         Visitor vUnknown = new Visitor("V999", "Unknown", 0, "Standard", false);
         dropTower.checkVisitorFromHistory(vUnknown); 
@@ -76,7 +76,7 @@ public class AssignmentTwo {
         dropTower.numberOfVisitors();
 
         // Print all visitors in history
-        System.out.println("\nPrinting ride history:");
+        System.out.println("\nPrinting ride history...");
         dropTower.printRideHistory();
     }
 
@@ -147,19 +147,19 @@ public class AssignmentTwo {
         ferrisWheel.addVisitorToQueue(v10);
 
         // Print queue before run
-        System.out.println("\nQueue before cycle:");
+        System.out.println("\n=== Queue before cycle ===");
         ferrisWheel.printQueue();
 
         // Run one cycle
-        System.out.println("\nRunning cycle:");
+        System.out.println("\nRunning cycle...");
         ferrisWheel.runOneCycle();
 
         // Print queue after run
-        System.out.println("\nQueue after cycle:");
+        System.out.println("\n=== Queue after cycle ===");
         ferrisWheel.printQueue();
 
         // Print history
-        System.out.println("\nHistory after cycle:");
+        System.out.println("\n=== History after cycle ===");
         ferrisWheel.printRideHistory();
     }
 
