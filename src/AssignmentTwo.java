@@ -5,6 +5,7 @@ public class AssignmentTwo {
         assignment.partThree();
         assignment.partFourA();
         assignment.partFourB();
+        assignment.partFive();
     }
 
     public void partThree() {
@@ -22,7 +23,7 @@ public class AssignmentTwo {
         Visitor v5 = new Visitor("V005", "Lee", 30, "VIP", true);
 
         // Add visitors to the Queue
-        System.out.println("Adding visitors...");
+        System.out.println("Adding visitors to history:");
         coaster.addVisitorToQueue(v1);
         coaster.addVisitorToQueue(v2);
         coaster.addVisitorToQueue(v3);
@@ -57,7 +58,7 @@ public class AssignmentTwo {
         Visitor v5 = new Visitor("V005", "Lee", 30, "VIP", true);
 
         // Add visitors to the History
-        System.out.println("Adding visitors to history...");
+        System.out.println("Adding visitors to history:");
         dropTower.addVisitorToHistory(v1);
         dropTower.addVisitorToHistory(v2);
         dropTower.addVisitorToHistory(v3);
@@ -65,7 +66,7 @@ public class AssignmentTwo {
         dropTower.addVisitorToHistory(v5);
 
         // Check if a visitor is in history
-        System.out.println("\nChecking visitors...");
+        System.out.println("\nChecking visitors:");
         dropTower.checkVisitorFromHistory(v3); 
         Visitor vUnknown = new Visitor("V999", "Unknown", 0, "Standard", false);
         dropTower.checkVisitorFromHistory(vUnknown); 
@@ -88,7 +89,7 @@ public class AssignmentTwo {
 
         // Create Visitors
         Visitor v1 = new Visitor("V001", "Tom", 20, "Standard", false);
-        Visitor v2 = new Visitor("V002", "Bob", 22, "VIP", true);
+        Visitor v2 = new Visitor("V002", "Bob", 25, "Standard", false);
         Visitor v3 = new Visitor("V003", "Ben", 25, "Standard", false);
         Visitor v4 = new Visitor("V004", "Jack", 18, "Standard", false);
         Visitor v5 = new Visitor("V005", "Lee", 30, "VIP", true);
@@ -114,6 +115,52 @@ public class AssignmentTwo {
     }
 
     public void partFive() {
+        System.out.println("\n=== Part 5: Run a Ride Cycle ===");
+
+        // Create a new Ride
+        Employee operator = new Employee("E004", "David", 35, "Operator", 5500);
+        Ride ferrisWheel = new Ride("Ferris Wheel", "Family", operator);
+        ferrisWheel.setMaxRider(3); // Max 3 visitors per cycle
+
+        // Create 10 Visitors
+        Visitor v1 = new Visitor("V001", "Tom", 20, "Standard", false);
+        Visitor v2 = new Visitor("V002", "Bob", 22, "VIP", true);
+        Visitor v3 = new Visitor("V003", "Ben", 25, "Standard", false);
+        Visitor v4 = new Visitor("V004", "Jack", 18, "Standard", false);
+        Visitor v5 = new Visitor("V005", "Lee", 30, "VIP", true);
+        Visitor v6 = new Visitor("V006", "Mary", 21, "Standard", false);
+        Visitor v7 = new Visitor("V007", "Lisa", 24, "VIP", true);
+        Visitor v8 = new Visitor("V008", "John", 29, "Standard", false);
+        Visitor v9 = new Visitor("V009", "Mike", 19, "Standard", false);
+        Visitor v10 = new Visitor("V010", "Sara", 23, "VIP", true);
+
+        // Add all to queue
+        ferrisWheel.addVisitorToQueue(v1);
+        ferrisWheel.addVisitorToQueue(v2);
+        ferrisWheel.addVisitorToQueue(v3);
+        ferrisWheel.addVisitorToQueue(v4);
+        ferrisWheel.addVisitorToQueue(v5);
+        ferrisWheel.addVisitorToQueue(v6);
+        ferrisWheel.addVisitorToQueue(v7);
+        ferrisWheel.addVisitorToQueue(v8);
+        ferrisWheel.addVisitorToQueue(v9);
+        ferrisWheel.addVisitorToQueue(v10);
+
+        // Print queue before run
+        System.out.println("\nQueue before cycle:");
+        ferrisWheel.printQueue();
+
+        // Run one cycle
+        System.out.println("\nRunning cycle:");
+        ferrisWheel.runOneCycle();
+
+        // Print queue after run
+        System.out.println("\nQueue after cycle:");
+        ferrisWheel.printQueue();
+
+        // Print history
+        System.out.println("\nHistory after cycle:");
+        ferrisWheel.printRideHistory();
     }
 
     public void partSix() {

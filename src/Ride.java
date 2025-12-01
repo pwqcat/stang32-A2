@@ -21,6 +21,10 @@ public class Ride implements RideInterface {
     
     // List for ride history
     private List<Visitor> rideHistory;
+    
+    // Cycle variables
+    private int maxRider;
+    private int numOfCycles;
 
     // Default Constructor
     public Ride() {
@@ -29,6 +33,8 @@ public class Ride implements RideInterface {
         this.operator = null;
         this.waitingLine = new LinkedList<>();
         this.rideHistory = new LinkedList<>();
+        this.maxRider = 1;
+        this.numOfCycles = 0;
     }
 
     // Parameterized Constructor
@@ -38,6 +44,8 @@ public class Ride implements RideInterface {
         this.operator = operator;
         this.waitingLine = new LinkedList<>();
         this.rideHistory = new LinkedList<>();
+        this.maxRider = 1;
+        this.numOfCycles = 0;
     }
 
     // Getters and Setters
@@ -50,6 +58,11 @@ public class Ride implements RideInterface {
 
     public Employee getOperator() { return operator; }
     public void setOperator(Employee operator) { this.operator = operator; }
+    
+    public int getMaxRider() { return maxRider; }
+    public void setMaxRider(int maxRider) { this.maxRider = maxRider; }
+    
+    public int getNumOfCycles() { return numOfCycles; }
 
     // Implementation of RideInterface methods
 
@@ -147,5 +160,32 @@ public class Ride implements RideInterface {
 
     @Override
     public void runOneCycle() {
+        if (operator == null) {
+            System.out.println("Error: Ride cannot run without an operator.");
+            return;
+        }
+        
+        if (waitingLine.isEmpty()) {
+            System.out.println("Error: Ride cannot run with an empty queue.");
+            return;
+        }
+        
+        System.out.println("Running one cycle:");
+        int ridersProcessed = 0;
+        
+        // Take visitors from queue up to maxRider
+        for (int i = 0; i < maxRider; i++) {
+            if (waitingLine.isEmpty()) {
+                break;
+            }
+            
+            // Remove from queue and add to history
+            Visitor v = waitingLine.remove();
+            addVisitorToHistory(v);
+            ridersProcessed++;
+        }
+        
+        numOfCycles++;
+        System.out.println("Cycle completed. Processed " + ridersProcessed + " visitors.");
     }
 }
