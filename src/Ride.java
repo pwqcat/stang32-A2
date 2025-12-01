@@ -1,3 +1,8 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -143,7 +148,12 @@ public class Ride implements RideInterface {
         Iterator<Visitor> it = rideHistory.iterator();
         while (it.hasNext()) {
             Visitor v = it.next();
-            System.out.println("  - " + v.getName());
+            // Print all details to confirm correct import
+            System.out.println("  - Name: " + v.getName() + 
+                             ", Age: " + v.getAge() + 
+                             ", ID: " + v.getId() + 
+                             ", Ticket: " + v.getTicketType() + 
+                             ", VIP: " + v.isVipStatus());
         }
     }
 
@@ -187,5 +197,49 @@ public class Ride implements RideInterface {
         
         numOfCycles++;
         System.out.println("Cycle completed. Processed " + ridersProcessed + " visitors.");
+    }
+
+    // Export history to file
+    public void exportRideHistory(String filename) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
+            for (Visitor v : rideHistory) {
+                String record = v.getName() + "," + 
+                              v.getAge() + "," + 
+                              v.getId() + "," + 
+                              v.getTicketType() + "," + 
+                              v.isVipStatus();
+                writer.write(record);
+                writer.newLine();
+            }
+            System.out.println("Export success.");
+        } catch (IOException e) {
+            System.out.println("Error exporting file: " + e.getMessage());
+        }
+    }
+
+    // Import history from file
+    public void importRideHistory(String filename) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] data = line.split(",");
+                
+                // Parse data
+                String name = data[0];
+                int age = Integer.parseInt(data[1]);
+                String id = data[2];
+                String ticketType = data[3];
+                boolean isVip = Boolean.parseBoolean(data[4]);
+                
+                // Create and add visitor
+                Visitor v = new Visitor(id, name, age, ticketType, isVip);
+                addVisitorToHistory(v);
+            }
+            System.out.println("Import success.");
+        } catch (IOException e) {
+            System.out.println("Error reading file: " + e.getMessage());
+        } catch (NumberFormatException e) {
+            System.out.println("Error parsing number: " + e.getMessage());
+        }
     }
 }

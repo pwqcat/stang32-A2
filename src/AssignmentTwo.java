@@ -6,6 +6,8 @@ public class AssignmentTwo {
         assignment.partFourA();
         assignment.partFourB();
         assignment.partFive();
+        assignment.partSix();
+        assignment.partSeven();
     }
 
     public void partThree() {
@@ -164,8 +166,48 @@ public class AssignmentTwo {
     }
 
     public void partSix() {
+        System.out.println("\n=== Part 6: Export History ===");
+
+        // Create a new Ride
+        Employee operator = new Employee("E005", "Emily", 26, "Operator", 4600);
+        Ride trainRide = new Ride("Mini Train", "Family", operator);
+
+        // Create Visitors
+        Visitor v1 = new Visitor("V001", "Tom", 20, "Standard", false);
+        Visitor v2 = new Visitor("V002", "Bob", 25, "Standard", false);
+        Visitor v3 = new Visitor("V003", "Ben", 25, "Standard", false);
+        Visitor v4 = new Visitor("V004", "Jack", 18, "Standard", false);
+        Visitor v5 = new Visitor("V005", "Lee", 30, "VIP", true);
+
+        // Add to history
+        trainRide.addVisitorToHistory(v1);
+        trainRide.addVisitorToHistory(v2);
+        trainRide.addVisitorToHistory(v3);
+        trainRide.addVisitorToHistory(v4);
+        trainRide.addVisitorToHistory(v5);
+
+        // Export to file
+        System.out.println("Exporting history to file...");
+        trainRide.exportRideHistory("ride_history.csv");
     }
 
     public void partSeven() {
+        System.out.println("\n=== Part 7: Import History ===");
+
+        // Create a NEW Ride (to prove import works)
+        Employee operator = new Employee("E006", "Frank", 29, "Operator", 4700);
+        Ride topSpin = new Ride("Top Spin", "Thrill", operator);
+
+        // Import from file
+        System.out.println("Importing history from file...");
+        topSpin.importRideHistory("ride_history.csv");
+
+        // Print number of visitors (should be 5)
+        System.out.println("\nNumber of visitors imported:");
+        topSpin.numberOfVisitors();
+
+        // Print history
+        System.out.println("\nPrinting imported history...");
+        topSpin.printRideHistory();
     }
 }
